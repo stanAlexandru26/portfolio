@@ -1,0 +1,27 @@
+@mixin light-theme() {
+  --background-color: rgb(255, 255, 255);
+  --text-color: rgb(0, 0, 0);
+  --accent-color: rgb(32, 32, 223);
+  --hover-color-main: rgb(229, 231, 235);
+  --hover-color-sec: rgb(210, 213, 219);
+}
+@mixin dark-theme() {
+  --background-color: rgb(15, 22, 36);
+  --text-color: rgb(205, 217, 228);
+  --accent-color: rgb(156, 156, 252);
+  --hover-color-main: rgb(30, 40, 55);
+  --hover-color-sec: rgb(55, 65, 80);
+}
+
+html,
+html[data-theme='light'] {
+  @include light-theme;
+}
+html[data-theme='dark'] {
+  @include dark-theme;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    @include dark-theme;
+  }
+}

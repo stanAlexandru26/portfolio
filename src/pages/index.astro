@@ -1,5 +1,41 @@
 ---
-import Layout from '@/layouts/BaseLayout.astro';
+import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
 ---
 
-<Layout title="Home" />
+<Layout title="Home">
+  <section class="introduction">
+    <div class="wrapper">
+      <h1>Alexandru-Ștefan Stan</h1>
+      <h3>Programer</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolores ea ipsa inventore vero deserunt aspernatur
+        dolorem nobis sunt quibusdam fugiat neque dignissimos nemo delectus mollitia iure, quis reprehenderit sed
+        consectetur pariatur vel. Inventore, culpa repellat, impedit cupiditate deleniti deserunt incidunt quisquam
+        reprehenderit minima quibusdam quis nisi tempore aliquam sequi?
+      </p>
+    </div>
+    <Image src="/images/portrait.webp" alt="My portrait" height={180} width={180} />
+  </section>
+  <section>
+    <h1>Latest projects</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores beatae nulla mollitia. Dignissimos itaque
+      reiciendis dolorem explicabo earum voluptatum!
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+
+    img {
+      align-self: end;
+      border-radius: 100%;
+    }
+  }
+</style>

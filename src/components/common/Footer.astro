@@ -1,0 +1,25 @@
+---
+const date = new Date().getFullYear();
+---
+
+<footer>
+  <p>
+    &copy; {date}
+    <a href="https://github.com/stanAlexandru26">Stan Alexandru-Ștefan</a>
+  </p>
+</footer>
+
+<style lang="scss">
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    a,
+    a:visited {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { NAVBAR_LINKS } from '@/assets/data/Navigation';
+import { CONTACT_LINKS } from '@/assets/data/Contact';
+
+import NavbarItem from './NavbarItem.astro';
+import SocialButton from './SocialButton.astro';
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="/">
+        <Icon name="avatar" size={45} />
+      </a>
+      {NAVBAR_LINKS.filter((link) => link.inNavbar).map((item) => <NavbarItem {...item} />)}
+    </nav>
+    <address>
+      {CONTACT_LINKS.filter((link) => link.inNavbar).map((item) => <SocialButton {...item} />)}
+      <ThemeToggle />
+    </address>
+  </div>
+</header>
+
+<style>
+  header {
+    padding: 1rem 0px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav,
+  address {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+</style>

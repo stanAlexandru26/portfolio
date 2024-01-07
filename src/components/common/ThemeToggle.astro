@@ -1,0 +1,92 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const moon = 'mi:moon';
+const sun = 'mi:sun';
+---
+
+<button type="button" aria-label="Toggle Theme" id="theme-toggle"
+  ><Icon name={moon} size={20} /> <Icon name={sun} size={20} /></button
+>
+
+<style lang="scss">
+  button {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hover-color-main);
+    border: none;
+    border-radius: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--hover-color-sec);
+    }
+    [data-icon] {
+      color: var(--text-color);
+    }
+  }
+
+  html[data-theme='dark'] {
+    [data-icon='mi:moon'] {
+      display: none;
+    }
+    [data-icon='mi:sun'] {
+      display: inline;
+    }
+  }
+  html[data-theme='light'] {
+    [data-icon='mi:moon'] {
+      display: inline;
+    }
+    [data-icon='mi:sun'] {
+      display: none;
+    }
+  }
+
+  html:not([data-theme]) {
+    [data-icon='mi:moon'] {
+      display: inline;
+    }
+    [data-icon='mi:sun'] {
+      display: none;
+    }
+    @media (prefers-color-scheme: 'dark') {
+      [data-icon='mi:moon'] {
+        display: none;
+      }
+      [data-icon='mi:sun'] {
+        display: inline;
+      }
+    }
+  }
+</style>
+
+<script is:inline>
+  const theme = () => {
+    const theme = { dark: 'dark', light: 'light' };
+    const rootElement = document.documentElement;
+
+    const cookieTheme = localStorage.getItem('theme');
+    if (cookieTheme) {
+      rootElement.dataset['theme'] = cookieTheme;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      //check for noscript
+      if (!themeToggle) return;
+
+      const toggleTheme = () => {
+        const currentTheme = rootElement.dataset['theme'];
+        const newTheme = currentTheme == theme.light ? theme.dark : theme.light;
+        rootElement.dataset['theme'] = newTheme;
+        localStorage.setItem('theme', newTheme);
+      };
+      themeToggle.addEventListener('click', toggleTheme);
+    });
+  };
+
+  theme();
+</script>

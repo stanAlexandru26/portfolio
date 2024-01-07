@@ -1,11 +1,10 @@
 import { defineConfig } from 'astro/config';
-
 import vercel from '@astrojs/vercel/serverless';
 import partytown from '@astrojs/partytown';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
-import compress from 'astro-compress';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,5 +18,12 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  integrations: [partytown(), mdx(), sitemap(), compress()],
+  integrations: [
+    partytown(),
+    mdx(),
+    sitemap(),
+    icon({
+      iconDir: 'src/assets/icons',
+    }),
+  ],
 });

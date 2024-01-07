@@ -1,0 +1,26 @@
+@use '_mixins';
+@use '_normalize';
+@use 'variables';
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 150%;
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+}
+
+.container {
+  margin: auto;
+  width: calc(100vw - 40%);
+}

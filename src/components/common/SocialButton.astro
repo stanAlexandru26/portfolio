@@ -1,0 +1,15 @@
+---
+import { Icon } from 'astro-icon/components';
+const { title, href, description, icon } = Astro.props;
+---
+
+<a href={href} aria-label={`${href} link`}><Icon name={icon} size={20} /></a>
+
+<style lang="scss">
+  [data-icon] {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

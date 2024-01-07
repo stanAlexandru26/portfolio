@@ -1,0 +1,25 @@
+---
+const { href, name } = Astro.props;
+const isCurrentPage = href === Astro.url.pathname;
+---
+
+<a href={href} class:list={[{ curentPage: isCurrentPage }]}>
+  {name}
+</a>
+<style lang="scss">
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    &:hover {
+      background-color: var(--hover-color-sec);
+    }
+  }
+  .curentPage {
+    background-color: var(--hover-color-main);
+    &:hover {
+      background-color: var(--hover-color-sec);
+    }
+  }
+</style>
